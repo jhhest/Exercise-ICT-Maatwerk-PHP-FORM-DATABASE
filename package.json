@@ -1,0 +1,32 @@
+{
+  "name": "ictmaatwerk_form_database",
+  "version": "1.0.0",
+  "description": "Exercise project to make a form and store data in a simple database",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jhhest/Exercise-ICT-Maatwerk-PHP-FORM-DATABASE.git"
+  },
+  "keywords": [
+    "PHP",
+    "MySQL",
+    "Bootstrap",
+    "Database",
+    "HTML",
+    "CSS"
+  ],
+  "author": "Jan van Hest",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jhhest/Exercise-ICT-Maatwerk-PHP-FORM-DATABASE/issues"
+  },
+  "homepage": "https://github.com/jhhest/Exercise-ICT-Maatwerk-PHP-FORM-DATABASE#readme",
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.15.0"
+  }
+}
