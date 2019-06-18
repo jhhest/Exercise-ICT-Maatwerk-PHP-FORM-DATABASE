@@ -24,22 +24,22 @@
         <div class="row">
             <div class="col">
                 <h2>Naamgegegevens</h2>
-                <p><label for="">Voornaam:</label><input type="text" class="form-control" id="firstName" placeholder="" value="" required></p>
-                <p><label for="">Achternaam:</label><input type="text" class="form-control" id="firstName" placeholder="" value="" required></p>
-                <p class="font-weight-bold">Geboortedatum:</p>
+                <p><label for="">Voornaam:</label><input type="text" class="form-control" id="voornaam" placeholder="" value="" required></p>
+                <p><label for="">Achternaam:</label><input type="text" class="form-control" id="achternaam" placeholder="" value="" required></p>
+                <p><label for="">Geboortedatum:</label><input type="date" class="form-control" id="geboortedatum" placeholder="" value="" required></p>
                 <h2>Adresgegevens</h2>
-                <p><label for="">Straatnaam, nummer</label><input type="text" class="form-control" id="firstName" placeholder="" value="" required></p>
+                <p><label for="">Straatnaam, nummer</label><input type="text" class="form-control" id="adres" placeholder="" value="" required></p>
                 <p>Postcode,
-                    <label for="">Plaatsnaam.</label><input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                    <label for="">Plaatsnaam.</label><input type="text" class="form-control" id="postcode" placeholder="" value="" required>
                 </p>
                 <h2>Contactgegevens:</h2>
-                <p>Mobile number:</p>
-                <p><label for="">E-mail:</label><input type="email" class="form-control" id="firstName" placeholder="Johndoe@microsoft.com" value="" required></p>
+                <p><label for="">Mobiel Telefoonummer:</label><input type="mobile_number" class="form-control" id="mobile_number" placeholder="Johndoe@microsoft.com" value="" required></p>
+                <p><label for="">E-mail:</label><input type="email" class="form-control" id="mail" placeholder="Johndoe@microsoft.com" value="" required></p>
             </div>
 
             <div class="col">
                 <h2>Persoonlijke gegevens:</h2>
-                <label for="">Reden van aanmelding</label><input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+                <label for="">Reden van aanmelding</label><input type="text" class="form-control" id="aanmeldingsreden" placeholder="" value="" required="">
                 <!-- tekst vak wat vrij in te vullen is. -->
                 <p>Rooster</p>
                 <!-- checkmark vakjes met maandag, dinsdag, woensdag, donderdag, vrijdag. Ochtend en middag apart aan te vinken. -->
