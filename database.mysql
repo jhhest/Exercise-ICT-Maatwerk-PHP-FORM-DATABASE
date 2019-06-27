@@ -1,4 +1,0 @@
-CREATE DATABASE ict_maatwerk;
-USE DATABASE ict_maatwerk;
-CREATE TABLE clients;
-CREATE TABLE schedule;
