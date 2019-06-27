@@ -1,71 +1,59 @@
-CREATE TABLE klanten (
-  klant_id INT NOT NULL AUTO_INCREMENT,
-  voornaam VARCHAR(255) NOT NULL,
-  achternaam VARCHAR(255) NOT NULL,
-  geboortedatum DATE NOT NULL,
-  locaties VARCHAR(255) NOT NULL,
-  opmerkingen TEXT(255) NOT NULL,
-  rooster TEXT(255) NOT NULL,
-  PRIMARY KEY (klant_id)
+CREATE TABLE `klanten` (
+  `klant_id` INT NOT NULL AUTO_INCREMENT,
+  `voornaam` VARCHAR(255) NOT NULL,
+  `achternaam` VARCHAR(255) NOT NULL,
+  `geboortedatum` DATE NOT NULL,
+  `adres` VARCHAR(255) NOT NULL,
+  `opmerkingen` TEXT NOT NULL,
+  `rooster` TEXT NOT NULL,
+  `Mobiele_telefoon` INT NOT NULL,
+  `Reden van aanmelding` TEXT NOT NULL,
+  PRIMARY KEY (`klant_id`)
 );
-CREATE TABLE locatie (
-  locatie_id VARCHAR(255) NOT NULL AUTO_INCREMENT,
-  adres VARCHAR(255) NOT NULL,
-  Postcode varchar(255) NOT NULL,
-  woonplaats VARCHAR(255) NOT NULL,
-  woonplaats VARCHAR(255) NOT NULL,
-  PRIMARY KEY (locatie_id)
+CREATE TABLE `locatie` (
+  `locatie_id` INT NOT NULL AUTO_INCREMENT,
+  `adres` VARCHAR(255) NOT NULL,
+  `Postcode` varchar(255) NOT NULL,
+  `woonplaats` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`locatie_id`)
 );
-CREATE TABLE verblijf_woonvorm (
-  soort_verblijf VARCHAR(255) NOT NULL UNIQUE,
-  PRIMARY KEY (soort_verblijf)
+CREATE TABLE `Roostertijden` (
+  `rooster_ID` INT NOT NULL AUTO_INCREMENT,
+  `dagdelen` INT NOT NULL,
+  PRIMARY KEY (`rooster_ID`)
 );
-CREATE TABLE opmerkingen (
-  Opmerkingen_id BINARY NOT NULL AUTO_INCREMENT,
-  Opmerking INT NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (Opmerkingen_id)
-);
-CREATE TABLE Roostertijden (
-  rooster_ID INT NOT NULL AUTO_INCREMENT,
-  dagdelen INT NOT NULL,
-  PRIMARY KEY (rooster_ID)
-);
-CREATE TABLE dagdelen (
-  aanwezigheid_id BINARY(255) NOT NULL AUTO_INCREMENT,
-  Maandagochtend BINARY(255) NOT NULL,
-  Maandagmiddag BINARY(255) NOT NULL,
-  maandagvrij BINARY(255) NOT NULL,
-  dinsdagochtend BINARY(255) NOT NULL,
-  dinsdagmiddag BINARY(255) NOT NULL,
-  dinsdagvrij BINARY(255) NOT NULL,
-  woensdagochtend BINARY(255) NOT NULL,
-  woensdagmiddag BINARY(255) NOT NULL,
-  woensdagvrij BINARY(255) NOT NULL,
-  donderdagochtend BINARY(255) NOT NULL,
-  donderdagmiddag BINARY(255) NOT NULL,
-  donderdagvrij BINARY(255) NOT NULL,
-  vrijdagochtend BINARY(255) NOT NULL,
-  vrijdagmiddag BINARY(255) NOT NULL,
-  vrijdagvrij BINARY(255) NOT NULL,
-  PRIMARY KEY (aanwezigheid_id)
+CREATE TABLE `dagdelen` (
+  `aanwezigheid_id` BOOLEAN NOT NULL AUTO_INCREMENT DEFAULT false,
+  `Maandagochtend` BOOLEAN NOT NULL DEFAULT false,
+  `Maandagmiddag` BOOLEAN NOT NULL DEFAULT false,
+  `maandagvrij` BOOLEAN NOT NULL DEFAULT false,
+  `dinsdagochtend` BOOLEAN NOT NULL DEFAULT false,
+  `dinsdagmiddag` BOOLEAN NOT NULL DEFAULT false,
+  `dinsdagvrij` BOOLEAN NOT NULL DEFAULT false,
+  `woensdagochtend` BOOLEAN NOT NULL DEFAULT false,
+  `woensdagmiddag` BOOLEAN NOT NULL DEFAULT false,
+  `woensdagvrij` BOOLEAN NOT NULL DEFAULT false,
+  `donderdagochtend` BOOLEAN NOT NULL DEFAULT false,
+  `donderdagmiddag` BOOLEAN NOT NULL DEFAULT false,
+  `donderdagvrij` BOOLEAN NOT NULL DEFAULT false,
+  `vrijdagochtend` BOOLEAN NOT NULL DEFAULT false,
+  `vrijdagmiddag` BOOLEAN NOT NULL DEFAULT false,
+  `vrijdagvrij` BOOLEAN NOT NULL DEFAULT false,
+  PRIMARY KEY (`aanwezigheid_id`)
 );
 ALTER TABLE
-  klanten
+  `klanten`
 ADD
-  CONSTRAINT klanten_fk0 FOREIGN KEY (locaties) REFERENCES locatie(locatie_id);
+  CONSTRAINT `klanten_fk0` FOREIGN KEY (`adres`) REFERENCES `locatie`(`locatie_id`);
 ALTER TABLE
-  klanten
+  `klanten`
 ADD
-  CONSTRAINT klanten_fk1 FOREIGN KEY (opmerkingen) REFERENCES opmerkingen(Opmerkingen_id);
+  CONSTRAINT `klanten_fk1` FOREIGN KEY (`opmerkingen`) REFERENCES ``(``);
 ALTER TABLE
-  klanten
+  `klanten`
 ADD
-  CONSTRAINT klanten_fk2 FOREIGN KEY (rooster) REFERENCES Roostertijden(rooster_ID);
+  CONSTRAINT `klanten_fk2` FOREIGN KEY (`rooster`) REFERENCES `Roostertijden`(`rooster_ID`);
 ALTER TABLE
-  locatie
+  `Roostertijden`
 ADD
-  CONSTRAINT locatie_fk0 FOREIGN KEY (woonplaats) REFERENCES verblijf_woonvorm(soort_verblijf);
-ALTER TABLE
-  Roostertijden
-ADD
-  CONSTRAINT Roostertijden_fk0 FOREIGN KEY (dagdelen) REFERENCES dagdelen(aanwezigheid_id);
+  CONSTRAINT `Roostertijden_fk0` FOREIGN KEY (`dagdelen`) REFERENCES `dagdelen`(`aanwezigheid_id`);
