@@ -48,3 +48,45 @@ ALTER TABLE `klanten` ADD CONSTRAINT `klanten_fk1` FOREIGN KEY (`opmerkingen`) R
 ALTER TABLE `klanten` ADD CONSTRAINT `klanten_fk2` FOREIGN KEY (`rooster`) REFERENCES `Roostertijden`(`rooster_ID`);
 
 ALTER TABLE `Roostertijden` ADD CONSTRAINT `Roostertijden_fk0` FOREIGN KEY (`dagdelen`) REFERENCES `dagdelen`(`aanwezigheid_id`);
+
+/*
+
+INSERT INTO TABLE `klanten` ( 
+	klant_id, voornaam, 
+	achternaam , 
+	geboortedatum, 
+	adres, 
+	postcode, 
+	plaats, 
+	opmerkingen, 
+	rooster, 
+	Mobiele_telefoon, 
+	Reden van aanmelding );
+
+CREATE TABLE `Roostertijden` (
+	`rooster_ID` INT NOT NULL AUTO_INCREMENT,
+	`dagdelen` INT NOT NULL,
+	PRIMARY KEY (`rooster_ID`)
+);
+
+CREATE TABLE `dagdelen` (
+	`aanwezigheid_id` INT NOT NULL AUTO_INCREMENT,
+	`Maandagochtend` BOOLEAN NOT NULL DEFAULT false,
+	`Maandagmiddag` BOOLEAN NOT NULL DEFAULT false,
+	`maandagvrij` BOOLEAN NOT NULL DEFAULT false,
+	`dinsdagochtend` BOOLEAN NOT NULL DEFAULT false,
+	`dinsdagmiddag` BOOLEAN NOT NULL DEFAULT false,
+	`dinsdagvrij` BOOLEAN NOT NULL DEFAULT false,
+	`woensdagochtend` BOOLEAN NOT NULL DEFAULT false,
+	`woensdagmiddag` BOOLEAN NOT NULL DEFAULT false,
+	`woensdagvrij` BOOLEAN NOT NULL DEFAULT false,
+	`donderdagochtend` BOOLEAN NOT NULL DEFAULT false,
+	`donderdagmiddag` BOOLEAN NOT NULL DEFAULT false,
+	`donderdagvrij` BOOLEAN NOT NULL DEFAULT false,
+	`vrijdagochtend` BOOLEAN NOT NULL DEFAULT false,
+	`vrijdagmiddag` BOOLEAN NOT NULL DEFAULT false,
+	`vrijdagvrij` BOOLEAN NOT NULL DEFAULT false,
+	PRIMARY KEY (`aanwezigheid_id`)
+);
+
+*/

@@ -51,7 +51,7 @@ Translation of specification
 > Daarnaast mag het formulier opgemaakt worden met bootstrap om het uiterlijk wat op te krikken.
 > Daarnaast moeten de velden die vrij in te vullen zijn, niet verplicht zijn. Ook wel netjes om erbij te vermelden met een >\* of een veld verplicht is.
 
-## prerequisite
+## prequisite
 
 - Localwebhost
 - bootstrap
@@ -68,6 +68,10 @@ installed xampp with instructions of:
 
 - [Xamp installation instructions](https://www.apachefriends.org/faq_linux.html)
 
+#### Database
+
+The queries i use to set up the database are stored in sql_statements.sql. 
+
 ### Bootstrap
 
 No CSS styles are provided by project owner Jasper Ras. I will make use of bootstrap for some fancy CSS.
@@ -77,8 +81,6 @@ No CSS styles are provided by project owner Jasper Ras. I will make use of boots
 
 For version control and collaboration i make use of git (commandline version control) and gitkraken(graphical userinterface for git).
 
-Get git
-
 - [Official git website](https://git-scm.com/)
-  Get gitkraken
 - [Gitkraken website](https://www.gitkraken.com/git-client)
+
