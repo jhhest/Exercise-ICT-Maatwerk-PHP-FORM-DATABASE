@@ -1,4 +1,4 @@
-        <form>
+        <form action="process_form.php">
             <div class="row form-group">
                 <div class="col">
                     <h2>Naamgegegevens</h2>

@@ -8,7 +8,7 @@
 
         <!-- Adresgegevens client -->
 <?php
-require_once("private/page_components/document_application_form.php");
+require_once(url_for("private/page_components/document_application_form.php"));
 ?>
     </div>
 
