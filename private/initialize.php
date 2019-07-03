@@ -6,7 +6,7 @@ require_once('inc/database.php');
 
 // constant is a variable. When defined and a value is assigned the value can't be changed anymore.  
 // constants: When defined  you can acces them everywhere. 
-// Do not use a $ sign 
+// Do not use a $ sign before the name of the constant!!
 define("SERVER_PATH", $_SERVER['DOCUMENT_ROOT']);
 
 define("PRIVATE_PATH", dirname(__FILE__));

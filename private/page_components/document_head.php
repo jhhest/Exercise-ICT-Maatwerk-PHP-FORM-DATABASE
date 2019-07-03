@@ -1,9 +1,21 @@
 <?php
 
-$page_title = 'Inschrijfformulier - ICT-Maatwerk';
+// parameters for page navigation;
 
-if (!isset($page_title)) {
-    $page_title = 'ICT-maatwerk';
+if (isset($_GET['navigation'])) {
+    $navigation = 'processed_form';
+}
+
+if (!isset($navigation)) {
+    $navigation = 'home';
+}
+
+if ($navigation == 'home') {
+    $page_title = "ICT maatwerk Aanmelding";
+} 
+
+if ($navigation == 'processed_form') {
+    $page_title = 'Verwerking aanmelding';
 }
 
 ?>

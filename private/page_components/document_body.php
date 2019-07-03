@@ -1,17 +1,15 @@
 <body>
     <div class="container">
-        <div class="row">
-
-            <!-- Start of form -->
-            <h1>Inschrijfformulier</h1>
-        </div>
-
-        <!-- Adresgegevens client -->
-<?php
-require_once(url_for("private/page_components/document_application_form.php"));
-?>
+        <!-- Application form to fill in client data. -->
+        <?php
+        if ($navigation == 'home') {
+            require_once(url_for("private/page_components/document_application_form.php"));
+        } else {
+            require_once(url_for("private/page_components/page_application_result.php"));
+        }
+        ?>
     </div>
-
+    <div class="row">&copy ICT maatwerk <?php echo date('Y'); ?></div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
