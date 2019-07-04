@@ -1,5 +1,5 @@
 <!-- Start of registration form -->
-<form action="process_form.php" method="get">
+<form action="process_form.php" method="post">
 
     <div class="row">
         <h1>Inschrijfformulier</h1>
@@ -27,7 +27,7 @@
         <div class="col">
             <!-- Contact Details -->
             <h2>Contactgegevens:</h2>
-            <p><label for="mobiele_telefoon">Mobiel Telefoonummer:</label><input type="mobile_number" class="form-control" id="mobiele_telefoon" placeholder="+31612345678" name="mobiele_telefoon" required></p>
+            <p><label for="mobiele_telefoon">Mobiel Telefoonummer:</label><input type="tel" class="form-control" id="mobiele_telefoon" placeholder="+31612345678" name="mobiele_telefoon" required></p>
             <p><label for="mail">E-mail:</label><input type="email" class="form-control" id="mail" placeholder="Johndoe@microsoft.com" name="mail" required></p>
         </div>
     </div>
@@ -39,12 +39,11 @@
             <h3>Maandag</h3>
             <p>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="maandag" id="maandagochtend" value="maandagochtend">
-                    <input class="form-check-input" type="checkbox" name="maandag" id="maandagochtend" value="maandagochtend">
+                    <input class="form-check-input" type="checkbox" name="maandagochtend" id="maandagochtend" value="maandagochtend">
                     <label class="form-check-label" for="maandagochtend">ochtend</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="maandag" id="maandagmiddag" value="maandagmiddag">
+                    <input class="form-check-input" type="checkbox" name="maandagmiddag" id="maandagmiddag" value="maandagmiddag">
                     <label class="form-check-label" for="maandagmiddag">middag</label>
                 </div>
             </p>
@@ -52,11 +51,11 @@
             <h3>dinsdag</h3>
             <p>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="dinsdag" id="dinsdagochtend" value="ochtend">
+                    <input class="form-check-input" type="checkbox" name="dinsdagochtend" id="dinsdagochtend" value="dinsdagochtend">
                     <label class="form-check-label" for="ochtend">ochtend</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="dinsdag" id="dinsdagmiddag" value="middag">
+                    <input class="form-check-input" type="checkbox" name="dinsdagmiddag" id="dinsdagmiddag" value="dinsdagmiddag">
                     <label class="form-check-label" for="middag">middag</label>
                 </div>
             </p>
@@ -64,22 +63,22 @@
             <h3>Woensdag</h3>
             <p>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="woensdag" id="woensdagochtend" value="ochtend">
+                    <input class="form-check-input" type="checkbox" name="woensdagochtend" id="woensdagochtend" value="woensdagochtend">
                     <label class="form-check-label" for="ochtend">ochtend</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="woensdag" id="woensdagmiddag" value="middag">
+                    <input class="form-check-input" type="checkbox" name="woensdagmiddag" id="woensdagmiddag" value="woensdagmiddag">
                     <label class="form-check-label" for="middag">middag</label>
                 </div>
             </p>
             <h3>Donderdag</h3>
             <p>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="donderdag" id="donderdagochtend" value="ochtend">
+                    <input class="form-check-input" type="checkbox" name="donderdagochtend" id="donderdagochtend" value="donderdagochtend">
                     <label class="form-check-label" for="ochtend">ochtend</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="donderdag" id="donderdagmiddag" value="middag">
+                    <input class="form-check-input" type="checkbox" name="donderdagmiddag" id="donderdagmiddag" value="donderdagmiddag">
                     <label class="form-check-label" for="middag">middag</label>
                 </div>
             </p>
@@ -87,11 +86,11 @@
             <h3>Vrijdag</h3>
             <p>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="vrijdag" id="vrijdagochtend" value="ochtend">
+                    <input class="form-check-input" type="checkbox" name="vrijdagochtend" id="vrijdagochtend" value="vrijdagochtend">
                     <label class="form-check-label" for="ochtend">ochtend</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="vrijdag" id="vrijdagmiddag" value="middag">
+                    <input class="form-check-input" type="checkbox" name="vrijdagmiddag" id="vrijdagmiddag" value="vrijdagmiddag">
                     <label class="form-check-label" for="middag">middag</label>
                 </div>
             </p>

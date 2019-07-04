@@ -1,3 +1,10 @@
+/* 
+Personal notes: 
+SHOW DATABASES;
+CREATE DATABASE db_name;
+USE db_name;
+*/
+
 CREATE DATABASE ICT_maatwerk_form;
 
 CREATE TABLE `klanten` (

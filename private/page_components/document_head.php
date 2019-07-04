@@ -2,7 +2,7 @@
 
 // parameters for page navigation;
 
-if (isset($_GET['navigation'])) {
+if (isset($_POST['navigation'])) {
     $navigation = 'processed_form';
 }
 
