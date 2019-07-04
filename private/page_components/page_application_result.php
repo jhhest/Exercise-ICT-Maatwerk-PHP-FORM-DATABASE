@@ -45,13 +45,15 @@ if (isset($_POST['vrijdagmiddag'])) {
 
 
 $personalia = [
-    ['naam' => $_POST['naam']],
-    ['achternaam' => $_POST['achternaam']],
-    ['geboortedatum' => $_POST['geboortedatum']],
-    ['straatnaam' => $_POST['straatnaam']],
-    ['Plaatsnaam' => $_POST['plaatsnaam']],
-    ['mobiele_telefoon' => $_POST['mobiele_telefoon']],
-    ['mail' => $_POST['mail']],
+    [
+        'naam' => $_POST['naam'],
+        'achternaam' => $_POST['achternaam'],
+        'geboortedatum' => $_POST['geboortedatum'],
+        'straatnaam' => $_POST['straatnaam'],
+        'plaatsnaam' => $_POST['plaatsnaam'],
+        'mobiele_telefoon' => $_POST['mobiele_telefoon'],
+        'mail' => $_POST['mail'],
+    ]
 ];
 
 $content = [
@@ -59,7 +61,7 @@ $content = [
     ['bijzonderheden' => $_POST['bijzonderheden']],
 ];
 
-if($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     echo "<p>Note: Form has been submitted</p>";
 }
 
@@ -79,6 +81,46 @@ print_r($_POST);
     <!-- Displaying result of submitted application form -->
     <h1>Aanmelding verwerkt</h1>
 </div>
+
+<div class="row">
+    <!-- Displaying result of submitted application form -->
+    <h1>Getting the values out of an associative array</h1>
+</div>
+
+<div class=row>
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <!-- <th scope="col">#</th> -->
+                <th scope="col">Naam</th>
+                <th scope="col">Achternaam</th>
+                <th scope="col">Geboortedatum</th>
+                <th scope="col">Straat</th>
+                <th scope="col">Plaatsnaam</th>
+                <th scope="col">Mobiele telefoon</th>
+                <th scope="col">Mail</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <?php foreach ($personalia as $p_item) { ?>
+                <tr>
+                    <td><?php echo $p_item['naam']; ?></td>
+                    <td><?php echo $p_item['achternaam']; ?></td>
+                    <td><?php echo $p_item['geboortedatum']; ?></td>
+                    <td><?php echo $p_item['straatnaam']; ?></td>
+                    <td><?php echo $p_item['plaatsnaam']; ?></td>
+                    <td><?php echo $p_item['mobiele_telefoon']; ?></td>
+                    <td><?php echo $p_item['mail']; ?></td>
+                </tr>
+            <?php } ?>
+        </tbody>
+    </table>
+
+</div>
+
 <div class="row">
     <div class="col">
         <ul>
