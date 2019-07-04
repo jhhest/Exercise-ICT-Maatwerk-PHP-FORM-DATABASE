@@ -1,99 +1,158 @@
 /* 
 Personal notes: 
 SHOW DATABASES;
+DROP DATABASE;
 CREATE DATABASE db_name;
 USE db_name;
-*/
 
-CREATE DATABASE ICT_maatwerk_form;
+GRANT ALL PRIVILEGES ON ICT_maatwerk_aanmelding.*klanten
+TO 'jasper'@'localhost'
+IDENTIFIED BY 'REAcollegeVpro';
 
-CREATE TABLE `klanten` (
-	`klant_id` INT NOT NULL AUTO_INCREMENT,
-	`voornaam` VARCHAR(255) NOT NULL,
-	`achternaam` VARCHAR(255) NOT NULL,
-	`geboortedatum` DATE NOT NULL,
-	`adres` VARCHAR(255) NOT NULL,
-	`postcode` varchar(255) NOT NULL,
-	`plaats` varchar(255) NOT NULL,
-	`opmerkingen` TEXT NOT NULL,
-	`rooster` TEXT NOT NULL,
-	`Mobiele_telefoon` INT NOT NULL,
-	`Reden van aanmelding` TEXT NOT NULL,
-	PRIMARY KEY (`klant_id`)
-);
+SHOW GRANTS FOR 'jasper'@'localhost';
 
-CREATE TABLE `Roostertijden` (
-	`rooster_ID` INT NOT NULL AUTO_INCREMENT,
-	`dagdelen` INT NOT NULL,
-	PRIMARY KEY (`rooster_ID`)
-);
+SHOW TABLES
+DROP TABLES
 
-CREATE TABLE `dagdelen` (
-	`aanwezigheid_id` INT NOT NULL AUTO_INCREMENT,
-	`Maandagochtend` BOOLEAN NOT NULL DEFAULT false,
-	`Maandagmiddag` BOOLEAN NOT NULL DEFAULT false,
-	`maandagvrij` BOOLEAN NOT NULL DEFAULT false,
-	`dinsdagochtend` BOOLEAN NOT NULL DEFAULT false,
-	`dinsdagmiddag` BOOLEAN NOT NULL DEFAULT false,
-	`dinsdagvrij` BOOLEAN NOT NULL DEFAULT false,
-	`woensdagochtend` BOOLEAN NOT NULL DEFAULT false,
-	`woensdagmiddag` BOOLEAN NOT NULL DEFAULT false,
-	`woensdagvrij` BOOLEAN NOT NULL DEFAULT false,
-	`donderdagochtend` BOOLEAN NOT NULL DEFAULT false,
-	`donderdagmiddag` BOOLEAN NOT NULL DEFAULT false,
-	`donderdagvrij` BOOLEAN NOT NULL DEFAULT false,
-	`vrijdagochtend` BOOLEAN NOT NULL DEFAULT false,
-	`vrijdagmiddag` BOOLEAN NOT NULL DEFAULT false,
-	`vrijdagvrij` BOOLEAN NOT NULL DEFAULT false,
-	PRIMARY KEY (`aanwezigheid_id`)
-);
+CRUD
 
-ALTER TABLE `klanten` ADD CONSTRAINT `klanten_fk0` FOREIGN KEY (`adres`) REFERENCES `locatie`(`locatie_id`);
-
-ALTER TABLE `klanten` ADD CONSTRAINT `klanten_fk1` FOREIGN KEY (`opmerkingen`) REFERENCES ``(``);
-
-ALTER TABLE `klanten` ADD CONSTRAINT `klanten_fk2` FOREIGN KEY (`rooster`) REFERENCES `Roostertijden`(`rooster_ID`);
-
-ALTER TABLE `Roostertijden` ADD CONSTRAINT `Roostertijden_fk0` FOREIGN KEY (`dagdelen`) REFERENCES `dagdelen`(`aanwezigheid_id`);
-
-/*
-
-INSERT INTO TABLE `klanten` ( 
-	klant_id, voornaam, 
-	achternaam , 
-	geboortedatum, 
-	adres, 
-	postcode, 
-	plaats, 
-	opmerkingen, 
-	rooster, 
-	Mobiele_telefoon, 
-	Reden van aanmelding );
-
-CREATE TABLE `Roostertijden` (
-	`rooster_ID` INT NOT NULL AUTO_INCREMENT,
-	`dagdelen` INT NOT NULL,
-	PRIMARY KEY (`rooster_ID`)
-);
-
-CREATE TABLE `dagdelen` (
-	`aanwezigheid_id` INT NOT NULL AUTO_INCREMENT,
-	`Maandagochtend` BOOLEAN NOT NULL DEFAULT false,
-	`Maandagmiddag` BOOLEAN NOT NULL DEFAULT false,
-	`maandagvrij` BOOLEAN NOT NULL DEFAULT false,
-	`dinsdagochtend` BOOLEAN NOT NULL DEFAULT false,
-	`dinsdagmiddag` BOOLEAN NOT NULL DEFAULT false,
-	`dinsdagvrij` BOOLEAN NOT NULL DEFAULT false,
-	`woensdagochtend` BOOLEAN NOT NULL DEFAULT false,
-	`woensdagmiddag` BOOLEAN NOT NULL DEFAULT false,
-	`woensdagvrij` BOOLEAN NOT NULL DEFAULT false,
-	`donderdagochtend` BOOLEAN NOT NULL DEFAULT false,
-	`donderdagmiddag` BOOLEAN NOT NULL DEFAULT false,
-	`donderdagvrij` BOOLEAN NOT NULL DEFAULT false,
-	`vrijdagochtend` BOOLEAN NOT NULL DEFAULT false,
-	`vrijdagmiddag` BOOLEAN NOT NULL DEFAULT false,
-	`vrijdagvrij` BOOLEAN NOT NULL DEFAULT false,
-	PRIMARY KEY (`aanwezigheid_id`)
-);
+* CREATE
+* READ
+* UPDATE
+* DELETE
 
 */
+CREATE DATABASE ICT_maatwerk_aanmelding;
+CREATE TABLE klanten (
+  klant_id INT(11) NOT NULL AUTO_INCREMENT,
+  naam VARCHAR(255) NOT NULL,
+  achternaam VARCHAR(255) NOT NULL,
+  geboortedatum DATE NOT NULL,
+  straatnaam VARCHAR(255) NOT NULL,
+  plaatsnaam varchar(255) NOT NULL,
+  mobiele_telefoon INT NOT NULL,
+  mail varchar(255) NOT NULL,
+  aanmeldingsreden TEXT,
+  bijzonderheden TEXT,
+  PRIMARY KEY (klant_id),
+);
+CREATE TABLE roostertijden (
+  rooster_ID INT NOT NULL AUTO_INCREMENT,
+  klant_id INT(11),
+  maandagochtend TINYINT(1),
+  maandagmiddag TINYINT(1),
+  dinsdagochtend TINYINT(1),
+  dinsdagmiddag TINYINT(1),
+  woensdagmorgen TINYINT(1),
+  woensdagmiddag TINYINT(1),
+  donderdagochtend TINYINT(1),
+  donderdagmiddag TINYINT(1),
+  vrijdagochtend TINYINT(1),
+  vrijdagmiddag TINYINT(1),
+  PRIMARY KEY (`rooster_ID`)
+);
+
+ALTER TABLE roostertijden
+ADD INDEX fk_klant_id (klant_id)
+REFERENCES klanten(klant_id)
+ON DELETE
+ON UPDATE;
+
+INSERT INTO
+  klanten (
+    klant_id,
+    naam,
+    achternaam,
+    geboortedatum,
+    straatnaam,
+    plaatsnaam,
+    mobiele_telefoon,
+    mail,
+    aanmeldingsreden,
+    bijzonderheden
+  )
+VALUES
+  (
+    0,
+    'Jan',
+    'van Hest',
+    '1984/02/15',
+    'Abeelstraat 27',
+    '6562 GT Groesbeek',
+    0642091421,
+    'jan@vanhest.work',
+    'Herintreden in arbeidsmarkt',
+    'prettig gestoord'
+  );
+INSERT INTO
+  klanten (
+    naam,
+    achternaam,
+    geboortedatum,
+    straatnaam,
+    plaatsnaam,
+    mobiele_telefoon,
+    mail,
+    aanmeldingsreden,
+    bijzonderheden
+  )
+VALUES
+  (
+    'Kees',
+    'de Boer',
+    '1985/02/15',
+    'Chopinstraat 47',
+    '6562 GT Nijmegen',
+    0642011223,
+    'kees@deboer.nl',
+    'Herintreden in arbeidsmarkt',
+    'Saai in gesprek'
+  );
+INSERT INTO
+  klanten (
+    naam,
+    achternaam,
+    geboortedatum,
+    straatnaam,
+    plaatsnaam,
+    mobiele_telefoon,
+    mail,
+    aanmeldingsreden,
+    bijzonderheden
+  )
+VALUES
+  (
+    'Twan',
+    'Janssen',
+    '1977/02/15',
+    'Mozartstraat 47',
+    '6562 GT Amsterdam',
+    06123457896,
+    'twan@janssen.nl',
+    'Stabiliseren Dag en Nachtritme',
+    'verslavingsproblematiek'
+  );
+INSERT INTO
+  klanten (
+    naam,
+    achternaam,
+    geboortedatum,
+    straatnaam,
+    plaatsnaam,
+    mobiele_telefoon,
+    mail,
+    aanmeldingsreden,
+    bijzonderheden
+  )
+VALUES
+  (
+    'Piet',
+    'Pieterssen',
+    '1996/02/15',
+    'Beethovenstraat 6164',
+    '6562 GT Groningen',
+    0612345186,
+    'Piet@Pieterssen.nl',
+    'boosten werknemersvaardigheden',
+    'behoefte aan structuur'
+  );

@@ -44,7 +44,7 @@ if (isset($_POST['vrijdagmiddag'])) {
 
 
 
-$personalia = [
+$clients = [
     [
         'naam' => $_POST['naam'],
         'achternaam' => $_POST['achternaam'],
@@ -53,12 +53,9 @@ $personalia = [
         'plaatsnaam' => $_POST['plaatsnaam'],
         'mobiele_telefoon' => $_POST['mobiele_telefoon'],
         'mail' => $_POST['mail'],
+        'aanmeldingsreden' => $_POST['aanmeldingsreden'],
+        'bijzonderheden' => $_POST['bijzonderheden'],
     ]
-];
-
-$content = [
-    ['reden_aanmelding' => $_POST['aanmeldingsreden']],
-    ['bijzonderheden' => $_POST['bijzonderheden']],
 ];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -69,8 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <pre>
 <?php
 print_r($rooster);  // print_r means print readable (the <pre> tags are used to give indentation)
-print_r($personalia);
-print_r($content);
+print_r($clients);
 print_r($_GET);
 print_r($_POST);
 
@@ -81,12 +77,6 @@ print_r($_POST);
     <!-- Displaying result of submitted application form -->
     <h1>Aanmelding verwerkt</h1>
 </div>
-
-<div class="row">
-    <!-- Displaying result of submitted application form -->
-    <h1>Getting the values out of an associative array</h1>
-</div>
-
 <div class=row>
 
     <table class="table">
@@ -100,20 +90,25 @@ print_r($_POST);
                 <th scope="col">Plaatsnaam</th>
                 <th scope="col">Mobiele telefoon</th>
                 <th scope="col">Mail</th>
+                <th scope="col">aanmeldingsreden</th>
+                <th scope="col">bijzonderheden</th>
+                
             </tr>
         </thead>
 
         <tbody>
 
-            <?php foreach ($personalia as $p_item) { ?>
+            <?php foreach ($clients as $client) { ?>
                 <tr>
-                    <td><?php echo $p_item['naam']; ?></td>
-                    <td><?php echo $p_item['achternaam']; ?></td>
-                    <td><?php echo $p_item['geboortedatum']; ?></td>
-                    <td><?php echo $p_item['straatnaam']; ?></td>
-                    <td><?php echo $p_item['plaatsnaam']; ?></td>
-                    <td><?php echo $p_item['mobiele_telefoon']; ?></td>
-                    <td><?php echo $p_item['mail']; ?></td>
+                    <td><?php echo $client['naam']; ?></td>
+                    <td><?php echo $client['achternaam']; ?></td>
+                    <td><?php echo $client['geboortedatum']; ?></td>
+                    <td><?php echo $client['straatnaam']; ?></td>
+                    <td><?php echo $client['plaatsnaam']; ?></td>
+                    <td><?php echo $client['mobiele_telefoon']; ?></td>
+                    <td><?php echo $client['mail']; ?></td>
+                    <td><?php echo $client['aanmeldingsreden']; ?></td>
+                    <td><?php echo $client['bijzonderheden']; ?></td>
                 </tr>
             <?php } ?>
         </tbody>

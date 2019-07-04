@@ -1,3 +1,16 @@
 {
     "php.validate.executablePath": "/opt/lampp/bin/php",
+    "sqltools.connections": [
+        {
+            "askForPassword": false,
+            "connectionTimeout": 30,
+            "database": "ICT_maatwerk_aanmelding",
+            "dialect": "MySQL",
+            "name": "ICT_maatwerk_aanmeldformulier",
+            "password": "REAcollegeVpro",
+            "port": 3306,
+            "server": "localhost",
+            "username": "jasper"
+        }
+    ],
 }
