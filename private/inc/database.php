@@ -37,50 +37,62 @@ SHOW GRANTS FOR 'username'@'localhost'
  * DB Guide Linkedin learning
  **************************************************************
 
-<?php
-
 // This guide demonstrates the five fundamental steps
 // of database interaction using PHP.
 
 // Credentials
-$dbhost = '';
-$dbuser = '';
-$dbpass = '';
-$dbname = '';
+$dbhost = 'localhost';
+$dbuser = 'webuser';
+$dbpass = 'secretpassword';
+$dbname = 'globe_bank';
 
 // 1. Create a database connection
 $connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
+// Test if connection succeeded
+if(mysqli_connect_errno()) {
+  $msg = "Database connection failed: ";
+  $msg .= mysqli_connect_error();
+  $msg .= " (" . mysqli_connect_errno() . ")";
+  exit($msg);
+}
+
 // 2. Perform database query
+$query = "SELECT * FROM subjects";
+$result_set = mysqli_query($connection, $query);
+
+// Test if query succeeded
+if (!$result_set) {
+	exit("Database query failed.");
+}
 
 // 3. Use returned data (if any)
+while($subject = mysqli_fetch_assoc($result_set)) {
+  echo $subject["menu_name"] . "<br />";
+}
 
 // 4. Release returned data
+mysqli_free_result($result_set);
 
 // 5. Close database connection
 mysqli_close($connection);
 
-echo "<p>remark: Start of database.php</p>"
-
- */
+*/
 
 /****************************************************************
  * db credentials
  */
-$dbhost = 'localhost';
-$dbuser = 'jasper';
-$dbpass = 'REAcollegeVpro';
-$dbname = 'ICT_maatwerk_aanmeldformulier';
 
-$connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+echo "<p>remark: Start of database.php</p>";
 
 define("DB_SERVER", "localhost");
 define("DB_USER", "jasper");
 define("DB_PASS", "REAcollegeVpro");
-define("DB_NAME", "ICT_maatwerk_aanmeldformulier");
+define("DB_NAME", "ICT_maatwerk_aanmelding");
 
 function db_connect() {
     $connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
+    return $connection;
 }
 
 function db_disconnect($connection){
@@ -92,7 +104,7 @@ function db_disconnect($connection){
 /****
  * 
  * use $db = db_connect(); everywhere you need to make a connection to the database.  
- *  
+ * use dbdisconnect($db); everywhere you need to disconnect from the database. 
  * */ 
 
 
