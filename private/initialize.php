@@ -1,14 +1,16 @@
 <?php
 
-echo "<p>Remark: Start initialize.php</p>";
-require_once('inc/functions.php');
-require_once('inc/database.php');
+// Loads information regarding functions that are used through the website. 
+require_once('inc/functions.php'); 
+// Loads information that is needed to set database paramaters and functions needed particular use for database practices. 
+require_once('inc/database.php'); 
 
-// constant is a variable. When defined and a value is assigned the value can't be changed anymore.  
-// constants: When defined  you can acces them everywhere. 
-// Do not use a $ sign before the name of the constant!!
-define("SERVER_PATH", $_SERVER['DOCUMENT_ROOT']);
+// constants. 
+define("SERVER_PATH", $_SERVER['DOCUMENT_ROOT']); // sets a global variable with path of document root. 
+define("PRIVATE_PATH", dirname(__FILE__)); // Sets a global variable to folder private
 
-define("PRIVATE_PATH", dirname(__FILE__));
+
+// Sets a variable to keep track of which paged is viewed. 
+setup_navigation();
 
 ?>

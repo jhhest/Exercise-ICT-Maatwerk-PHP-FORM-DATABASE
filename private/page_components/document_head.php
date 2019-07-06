@@ -1,23 +1,4 @@
 <?php
-
-// parameters for page navigation;
-
-if (isset($_POST['navigation'])) {
-    $navigation = 'processed_form';
-}
-
-if (!isset($navigation)) {
-    $navigation = 'home';
-}
-
-if ($navigation == 'home') {
-    $page_title = "ICT maatwerk Aanmelding";
-} 
-
-if ($navigation == 'processed_form') {
-    $page_title = 'Verwerking aanmelding';
-}
-
 ?>
 <!doctype html>
 <html lang="en">

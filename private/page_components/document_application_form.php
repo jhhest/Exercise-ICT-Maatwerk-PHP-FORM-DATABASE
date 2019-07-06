@@ -100,7 +100,7 @@
             <h2>Persoonlijke gegevens:</h2>
             <p><label for="">Reden van aanmelding</label><input type="text" class="form-control" id="aanmeldingsreden" placeholder="" value="" required name="aanmeldingsreden"></p>
             <p><label for="opmerkingen">opmerkingen</label><textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="bijzonderheden"></textarea></p>
-            <input type=hidden value='processed_form' name="navigation">
+            <input type=hidden value='processed_form' name="navigation"> <!-- name=navigation -> $_POST[navigation] can be used to track when submit button is used. -->
             <p><button type="submit" class="btn btn-primary">Verstuur</button></p>
         </div>
     </div>

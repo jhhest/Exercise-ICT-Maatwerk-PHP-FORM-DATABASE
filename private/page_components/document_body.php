@@ -1,13 +1,7 @@
 <body>
     <div class="container">
         <!-- Application form to fill in client data. -->
-        <?php
-        if ($navigation == 'home') {
-            require_once(url_for("private/page_components/document_application_form.php"));
-        } else {
-            require_once(url_for("private/page_components/page_application_result.php"));
-        }
-        ?>
+        <?php load_main_content(); ?>
     </div>
     <div class="row">&copy ICT maatwerk <?php echo date('Y'); ?></div>
     <!-- Optional JavaScript -->

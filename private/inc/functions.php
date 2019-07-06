@@ -1,13 +1,32 @@
 <?php
-echo '<p>remark: Start of functions.php </p>';
 
-// echo '<p>remark: test $SERVER_PATH </p>';
-// echo $SERVER_PATH;
-
-function url_for($url_path)
-{
-    if ($url_path[0] != '/') {
-        $url_path = "/" . $url_path;
+function setup_navigation($nav_index = 'home') {
+    global $page_navigation;
+    if (isset($_POST["navigation"]) && ($_POST["navigation"] == 'processed_form')) {
+        $page_navigation = 'process_form';
+    } else {
+        $page_navigation = $nav_index;
+        }
+    echo "<br>inside function:" . $page_navigation . "<br>";
+    return $page_navigation; //Added return function in case value of $page_navigation needs to be checked. 
     }
-    return SERVER_PATH . $url_path;
+echo "<br>output:" . $_SERVER['DOCUMENT_ROOT'];
+function load_main_content() { 
+    global $page_navigation;
+    switch ($page_navigation) {
+        case 'process_form':
+            include_once($_SERVER['DOCUMENT_ROOT'] . "/private/page_components/page_application_result.php");
+            echo "page application result";
+            break;
+        case 'home':
+            include_once($_SERVER['DOCUMENT_ROOT'] . '/private/page_components/document_application_form.php');
+        break; 
+        default:
+            include_once($_SERVER['DOCUMENT_ROOT'] . '/private/page_components/document_application_form.php'); 
+    } 
 }
+
+    //
+    //
+
+?>
