@@ -11,9 +11,12 @@ $mobiele_telefoon = $_POST['mobiele_telefoon'];
 $mail = $_POST['mail'];
 $aanmeldingsreden = $_POST['aanmeldingsreden'];
 $bijzonderheden = $_POST['bijzonderheden'];
+
+// workschedule 
 $maandagochtend = $_POST['maandagochtend'];
 $maandagmiddag = $_POST['maandagmiddag'];
 $dinsdagochtend = $_POST['dinsdagochtend'];
+$dinsdagmiddag = $_POST['dinsdagmiddag'];
 $woensdagochtend = $_POST['woensdagochtend'];
 $woensdagmiddag = $_POST['woensdagmiddag'];
 $donderdagochtend = $_POST['donderdagochtend'];
@@ -21,19 +24,35 @@ $donderdagmiddag = $_POST['donderdagmiddag'];
 $vrijdagochtend = $_POST['vrijdagochtend'];
 $vrijdagmiddag = $_POST['vrijdagmiddag'];
 
-$dagdelen = [
-    $maandagochtend,
-    $maandagmiddag,
-    $dinsdagochtend,
-    $woensdagochtend,
-    $woensdagmiddag,
-    $donderdagochtend,
-    $donderdagmiddag,
-    $vrijdagochtend,
-    $vrijdagmiddag
-];
+// $dagdelen = [
+//     'maandagochtend' = $_POST['maandagochtend'],
+//     'maandagmiddag' = $_POST['maandagmiddag'],
+//     'dinsdagochtend' => $_POST['dinsdagochtend'],
+//     'dinsdagochtend' => $_POST['dinsdagmiddag'],
+//     'woensdagochtend' => $_POST['woensdagochtend'],
+//     'woensdagmiddag' => $_POST['woensdagmiddag'],
+//     'donderdagochtend' => $_POST['donderdagochtend'],
+//     'donderdagmiddag' => $_POST['donderdagmiddag'],
+//     'vrijdagochtend' => $_POST['vrijdagochtend'],
+//     'vrijdagmiddag' => $_POST['vrijdagmiddag']
+// ];
 
-// construct SQL INSERT statement to inser 
+// $dagdelen = [
+//     'maandag' = [
+//         'maandagochtend' => $_POST['maandagochtend'],
+//         'maandagmiddag' => $_POST['maandagmiddag']
+//     ],
+//     'dinsdagochtend' = $_POST['dinsdagochtend'],
+//     'dinsdagochtend' = $_POST['dinsdagmiddag'],
+//     'woensdagochtend' = $_POST['woensdagochtend'],
+//     'woensdagmiddag' = $_POST['woensdagmiddag'],
+//     'donderdagochtend' = $_POST['donderdagochtend'],
+//     'donderdagmiddag' = $_POST['donderdagmiddag'],
+//     'vrijdagochtend' = $_POST['vrijdagochtend'],
+//     'vrijdagmiddag' = $_POST['vrijdagmiddag']
+// ];
+
+// construct SQL INSERT statement to insert personalia into database
 $sql = "INSERT INTO klanten ";
 $sql .= "(naam, achternaam, geboortedatum, straatnaam, plaatsnaam, mobiele_telefoon, mail, aanmeldingsreden, bijzonderheden) ";
 $sql .= "VALUES (";
@@ -48,18 +67,50 @@ $sql .= "'" . $aanmeldingsreden . "',";
 $sql .= "'" . $bijzonderheden . "'";
 $sql .= ")";
 
-// Connect to database and insert values with $SQL retrieved from POST variables
+
+// Connect to database and insert personalia data with $SQL retrieved from POST variables
 $insert_returned_klant_id = db_insert($sql);
 
 $sql = "SELECT * FROM klanten WHERE klant_id=";
 $db = db_connect();
 $sql .= "'" . $insert_returned_klant_id . "'";
 $sqlresult_klanten = mysqli_query($db, $sql);
-$row = mysqli_fetch_assoc($sqlresult_klanten);
+$klantenresult = mysqli_fetch_assoc($sqlresult_klanten);
 mysqli_free_result($sqlresult_klanten);
 db_disconnect($db);
+
+// construct SQL INSERT statement to insert workschedule data into database 
+$sql = "INSERT INTO roostertijden ";
+$sql .= "(klant_id, maandagochtend, maandagmiddag, dinsdagochtend, dinsdagmiddag, woensdagochtend, woensdagmiddag, donderdagochtend, donderdagmiddag, vrijdagochtend, vrijdagmiddag) ";
+$sql .= "VALUES (";
+$sql .= "'" . $insert_returned_klant_id . "',";
+$sql .= "'" . $maandagochtend . "',";
+$sql .= "'" . $maandagmiddag . "',";
+$sql .= "'" . $dinsdagochtend . "',";
+$sql .= "'" . $dinsdagmiddag . "',";
+$sql .= "'" . $woensdagochtend . "',";
+$sql .= "'" . $woensdagmiddag . "',";
+$sql .= "'" . $donderdagochtend . "',";
+$sql .= "'" . $donderdagmiddag . "',";
+$sql .= "'" . $vrijdagochtend . "',";
+$sql .= "'" . $vrijdagmiddag . "'";
+$sql .= ")";
+
+
+
+// Connect to database and insert personalia data with $SQL retrieved from POST variables
+$insert_returned_rooster_ID = db_insert($sql);
+
+$sql = "SELECT * FROM roostertijden WHERE rooster_ID=";
+$sql .= "'" . $insert_returned_rooster_ID . "'";
+$db = db_connect();
+$sqlresult_rooster = mysqli_query($db, $sql);
+$roosterresult= mysqli_fetch_assoc($sqlresult_rooster);
+mysqli_free_result($sqlresult_rooster);
+db_disconnect($db);
+
 ?>
-    <div class="row">
+<div class="row">
         <!-- Displaying result of submitted application form, retrieving data from global variable POST. -->
         <h1>The Following data is submitted. </h1>
     </div>
@@ -82,13 +133,13 @@ db_disconnect($db);
 
             <tbody>
                 <tr>
-                    <td><?php echo $row['naam']; ?></td>
-                    <td><?php echo $row['achternaam']; ?></td>
-                    <td><?php echo $row['geboortedatum']; ?></td>
-                    <td><?php echo $row['straatnaam']; ?></td>
-                    <td><?php echo $row['plaatsnaam']; ?></td>
-                    <td><?php echo $row['mobiele_telefoon']; ?></td>
-                    <td><?php echo $row['mail']; ?></td>
+                    <td><?php echo $klantenresult['naam']; ?></td>
+                    <td><?php echo $klantenresult['achternaam']; ?></td>
+                    <td><?php echo $klantenresult['geboortedatum']; ?></td>
+                    <td><?php echo $klantenresult['straatnaam']; ?></td>
+                    <td><?php echo $klantenresult['plaatsnaam']; ?></td>
+                    <td><?php echo $klantenresult['mobiele_telefoon']; ?></td>
+                    <td><?php echo $klantenresult['mail']; ?></td>
                 </tr>
             </tbody>
         </table>
@@ -109,8 +160,8 @@ db_disconnect($db);
 
             <tbody>
                 <tr>
-                    <td><?php echo $row['aanmeldingsreden']; ?></td>
-                    <td><?php echo $row['bijzonderheden']; ?></td>
+                    <td><?php echo $klantenresult['aanmeldingsreden']; ?></td>
+                    <td><?php echo $klantenresult['bijzonderheden']; ?></td>
                 </tr>
             </tbody>
         </table>
@@ -134,20 +185,20 @@ db_disconnect($db);
             <tbody>
                 <tr>
                     <td>ochtend</td>
-                    <td class="table-success"></td>
-                    <td class="table-success"></td>
-                    <td class="table-danger"></td>
-                    <td class="table-success"></td>
-                    <td class="table-success"></td>
+                    <td class="<?php echo ($roosterresult['maandagochtend'] == 1) ? "table-success" : "table-danger" ?>"></td>
+                    <td class="<?php echo ($roosterresult['dinsdagochtend'] == 1) ? "table-success" : "table-danger" ?>"></td>
+                    <td class="<?php echo ($roosterresult['woensdagochtend'] == 1) ? "table-success" : "table-danger" ?>"></td>
+                    <td class="<?php echo ($roosterresult['donderdagochtend'] == 1) ? "table-success" : "table-danger" ?>"></td>
+                    <td class="<?php echo ($roosterresult['vrijdagochtend'] == 1) ? "table-success" : "table-danger" ?>"></td>
                 </tr>
                 </tr>
                 <tr>
                     <td>middag</td>
-                    <td class="table-success"></td>
-                    <td class="table-success"></td>
-                    <td class="table-success"></td>
-                    <td class="table-success"></td>
-                    <td class="table-danger"></td>
+                    <td class="<?php echo ($roosterresult['maandagmiddag'] == 1) ? "table-success" : "table-danger" ?>"></td>
+                    <td class="<?php echo ($roosterresult['dinsdagmiddag'] == 1) ? "table-success" : "table-danger" ?>"></td>
+                    <td class="<?php echo ($roosterresult['woensdagmiddag'] == 1) ? "table-success" : "table-danger" ?>"></td>
+                    <td class="<?php echo ($roosterresult['donderdagmiddag'] == 1) ? "table-success" : "table-danger" ?>"></td>
+                    <td class="<?php echo ($roosterresult['vrijdagmiddag'] == 1) ? "table-success" : "table-danger" ?>"></td>
                 </tr>
                 </tr>
             </tbody>
