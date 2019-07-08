@@ -43,7 +43,7 @@ CREATE TABLE roostertijden (
   maandagmiddag TINYINT(1),
   dinsdagochtend TINYINT(1),
   dinsdagmiddag TINYINT(1),
-  woensdagmorgen TINYINT(1),
+  woensdagochtend TINYINT(1),
   woensdagmiddag TINYINT(1),
   donderdagochtend TINYINT(1),
   donderdagmiddag TINYINT(1),
@@ -82,7 +82,7 @@ VALUES
     0642091421,
     'jan@vanhest.work',
     'Herintreden in arbeidsmarkt',
-    'prettig gestoord'
+    'Vriendelijk in contact'
   );
 INSERT INTO
   klanten (
